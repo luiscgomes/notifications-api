@@ -1,0 +1,14 @@
+services:
+  db:
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: compose-postgres
+      POSTGRES_PASSWORD: Postgres2023
+      POSTGRES_DB: notificationsdb
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+version: "3.8"
